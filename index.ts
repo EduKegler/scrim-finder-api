@@ -1,17 +1,18 @@
-const express = require('express');
-const { pool } = require('./config');
+import { getMatches } from './src/match/match.route';
+import express from 'express';
+import { getTeams } from './src/team/team.route';
+import { getUsers } from './src/user/user.route';
+import { getSections } from './src/section/section.route';
 
-const app = express();
 const port = 8000;
+const app = express();
 
-app.get('/api', (req, res) => {
-    return pool.query('SELECT * FROM matches', (error, results) => {
-        if (error) {
-            return res.send(error);
-        }
-        return res.send(results.rows);
-    })
-})
+app.route('/book').get()
+
+app.route('/api/matches/').get(getMatches);
+app.route('/api/teams/').get(getTeams);
+app.route('/api/users/').get(getUsers);
+app.route('/api/sections/').get(getSections);
 
 app.listen(port, () => {
     console.log(`Example app listing at http://localhost:${port}`)
