@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./index.ts",
-    "build": "tsc -p .",
-    "prod": "nodemon ./dist/index.js",
+    "build": "tsc -p . && node ./dist/index.js",
     "lint": "eslint **/*.ts"
   },
   "author": "",
