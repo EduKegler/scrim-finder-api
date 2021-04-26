@@ -1,1 +1,1 @@
-# scrum-finder-api
+# scrim-finder-api
